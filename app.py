@@ -2,7 +2,7 @@
 Application Canopus
 Ludovic Sauthier
 
-Step: Alfa
+Step: Alfa beta
 '''
 
 import flask
