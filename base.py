@@ -20,7 +20,7 @@ if dbserver == "localhost":
 else: #we are on azure
 
     #begin: keyvault block
-    keyVaultName = os.environ["KEY_VAULT_NAME"]
+    keyVaultName = "dole8953-keyvault" #this could be stored in an env. variable as well
 
     KVUri = "https://{}.vault.azure.net".format(keyVaultName)
     credential = DefaultAzureCredential()
