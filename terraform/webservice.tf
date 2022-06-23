@@ -21,12 +21,18 @@ resource "azurerm_app_service" "webapp" {
   location            = local.az_location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.appserviceplan.id
-  app_settings 		  = {SCM_DO_BUILD_DURING_DEPLOYMENT = "1", DBUSER = "adminTerraform", DBPASS = "QAZwsx123", DBSERVER = "canopus-server"}
+  app_settings 		  = {SCM_DO_BUILD_DURING_DEPLOYMENT = "1", DBUSER = "adminTerraform", DBSERVER = "canopus-server"}
     
   #this must be set for a linux host
   site_config {                                                            
      linux_fx_version = "PYTHON|3.9"                                        
   }
+  
+  #Create the managed identity for the web service - used to access other resources, e.g. keyvault
+  identity {
+	type = "SystemAssigned"
+  }
+  
 }
 
 # Add a subnet for the webservice - this is necessary to allow the webservice to talk to the DB

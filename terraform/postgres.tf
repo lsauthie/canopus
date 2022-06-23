@@ -81,8 +81,8 @@ resource "azurerm_postgresql_flexible_server" "default" {
   delegated_subnet_id    = azurerm_subnet.default.id
   private_dns_zone_id    = azurerm_private_dns_zone.default.id
   administrator_login    = "adminTerraform"
-  administrator_password = "QAZwsx123" #hardcoded in step2
-  #administrator_password = random_password.password.result #dynamically generated and stored in keyvault in step 3
+  #administrator_password = "QAZwsx123" #hardcoded in step2
+  administrator_password = random_password.password.result #dynamically generated and stored in keyvault in step 3
   zone                   = "1"
   storage_mb             = 32768
   sku_name               = "GP_Standard_D2s_v3"
